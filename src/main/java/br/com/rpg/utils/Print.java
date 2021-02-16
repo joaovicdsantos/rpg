@@ -11,7 +11,8 @@ package br.com.rpg.utils;
  */
 public final class Print {
 
-    private static final long TEMPO_PADRAO = 50;
+    private static final long TEMPO_PADRAO = 70;
+    private static final String CSI = "\u001B[";
 
     private Print() {
     }
@@ -64,6 +65,53 @@ public final class Print {
             Tempo.sleep(tempoEscrita);
         }
         System.out.println();
+        Tempo.sleep(tempoLeitura);
+    }
+
+    /**
+     * <h1>escreverColorido()</h1>
+     * <p>
+     * Implementa cores na função de escrita.
+     * </p>
+     * @param texto        - Texto que será escrito
+     * @param cor          - Define a cor de texto utilizada
+     */
+    public static void escreverColorido(String texto, Cores cor) {
+        System.out.print(CSI + cor.getCodigo());
+        escrever(texto);
+        System.out.print(CSI + "m");
+    }
+
+    /**
+     * <h1>escreverColorido()</h1>
+     * <p>
+     * Implementa cores na função de escrita.
+     * </p>
+     * @param texto        - Texto que será escrito
+     * @param cor          - Define a cor de texto utilizada
+     * @param tempoLeitura - O tempo que será reservado para a leitura da linha
+     */
+    public static void escreverColorido(String texto, Cores cor, long tempoLeitura) {
+        System.out.print(CSI + cor.getCodigo());
+        escrever(texto);
+        System.out.print(CSI + "m");
+        Tempo.sleep(tempoLeitura);
+    }
+
+    /**
+     * <h1>escreverColorido()</h1>
+     * <p>
+     * Implementa cores na função de escrita.
+     * </p>
+     * @param texto        - Texto que será escrito
+     * @param cor          - Define a cor de texto utilizada
+     * @param tempoLeitura - O tempo que será reservado para a leitura da linha
+     * @param tempoEscrita - Define o invervalo de tempo entre as letras
+     */
+    public static void escreverColorido(String texto, Cores cor, long tempoLeitura, long tempoEscrita) {
+        System.out.print(CSI + cor.getCodigo());
+        escrever(texto, 0, tempoEscrita);
+        System.out.print(CSI + "m");
         Tempo.sleep(tempoLeitura);
     }
 
