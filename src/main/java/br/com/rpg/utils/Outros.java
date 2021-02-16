@@ -23,7 +23,6 @@ public final class Outros {
      */
     public static void clearConsole() {
         final String os = System.getProperty("os.name");
-
         try {
             if (os.contains("Windows")) {
                 Runtime.getRuntime().exec("cls");
