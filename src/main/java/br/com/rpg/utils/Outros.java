@@ -1,7 +1,5 @@
 package br.com.rpg.utils;
 
-import java.io.IOException;
-
 /**
  * <h1>Outros.</h1>
  * <p>
@@ -22,16 +20,6 @@ public final class Outros {
      * </p>
      */
     public static void clearConsole() {
-        final String os = System.getProperty("os.name");
-        try {
-            if (os.contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
-            } else {
-                Runtime.getRuntime().exec("clear");
-            }
-        } catch (IOException e) {
-            System.out.println("Houve um probleminha!");
-        }
-
+        System.out.print("\033[H\033[2J");
     }
 }
