@@ -13,6 +13,7 @@ public final class Print {
 
     private static final long TEMPO_PADRAO = 70;
     private static final String CSI = "\u001B[";
+    private static final String PREFIXO_DIALOGO = "\t - ";
 
     private Print() {
     }
@@ -113,6 +114,36 @@ public final class Print {
         escrever(texto, 0, tempoEscrita);
         System.out.print(CSI + "m");
         Tempo.sleep(tempoLeitura);
+    }
+
+    /**
+     * <h1>escreverDialogo()</h1>
+     * <p>
+     * Usa a função de escrever para escrever diálogos.
+     * </p>
+     * @param locutor      - O locutor do diálogo
+     * @param texto        - Texto que será escrito
+     */
+    public static void escreverDialogo(String locutor, String... texto) {
+        escrever("[" + locutor + "]");
+        for (String fala : texto) {
+            escrever(Print.PREFIXO_DIALOGO + fala);
+        }
+    }
+
+    /**
+     * <h1>escreverDialogo()</h1>
+     * <p>
+     * Usa a função de escreverColorido para escrever diálogos coloridos.
+     * </p>
+     * @param locutor      - O locutor do diálogo
+     * @param texto        - Texto que será escrito
+     */
+    public static void escreverDialogoColorido(String locutor, Cores cor, String... texto) {
+        escreverColorido("[" + locutor + "]", cor);
+        for (String fala : texto) {
+            escreverColorido(Print.PREFIXO_DIALOGO + fala, cor);
+        }
     }
 
 }
